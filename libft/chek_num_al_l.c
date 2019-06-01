@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chek_num_al_l.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmann <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: tmann <tmann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 20:40:46 by tmann             #+#    #+#             */
-/*   Updated: 2019/04/13 20:45:33 by tmann            ###   ########.fr       */
+/*   Updated: 2019/06/01 15:47:28 by tmann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		chek_num_al_l(char *str)
 {
 	int i;
-	
+
 	i = 0;
 	if (str[i] == '\0' || str[i] == '\n')
 		return (0);
@@ -24,7 +24,7 @@ int		chek_num_al_l(char *str)
 		if (str[i] != 'L')
 			i++;
 		else
-	    	return (0);
+			return (0);
 	}
 	return (1);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_sim.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmann <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: tmann <tmann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 12:39:13 by tmann             #+#    #+#             */
-/*   Updated: 2019/04/15 12:41:47 by tmann            ###   ########.fr       */
+/*   Updated: 2019/06/01 15:47:04 by tmann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_check_sim(char *str, int sim)
+int			ft_check_sim(char *str, int sim)
 {
 	int i;
 

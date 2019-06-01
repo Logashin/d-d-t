@@ -6,7 +6,7 @@
 /*   By: tmann <tmann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:48:58 by tmann             #+#    #+#             */
-/*   Updated: 2019/04/13 19:06:09 by tmann            ###   ########.fr       */
+/*   Updated: 2019/06/01 15:46:48 by tmann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void				ft_free_two_arr(char **str);
 long				ft_swap_atoi(const char *str);
 void				ft_error_ps(void);
 int					ft_check_str_numb(char *str);
-int     			chek_num_al_l(char *str);
+int					chek_num_al_l(char *str);
 int					ft_check_sim(char *str, int sim);
 
 #endif

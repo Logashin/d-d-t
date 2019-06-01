@@ -6,7 +6,7 @@
 /*   By: tmann <tmann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 19:11:04 by tmann             #+#    #+#             */
-/*   Updated: 2019/05/31 22:06:02 by tmann            ###   ########.fr       */
+/*   Updated: 2019/06/01 15:12:50 by tmann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ int			main(void)
 	func_kill_cross(lst);
 	free_visited(lst);
 	ft_bfs(lst, po);
-	ants_go_output(po, lst, 0, lst);
+	ants_go_output(po, lst, 1, lst);
 	return (0);
 }
