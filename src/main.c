@@ -6,7 +6,7 @@
 /*   By: tmann <tmann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 19:11:04 by tmann             #+#    #+#             */
-/*   Updated: 2019/06/01 15:12:50 by tmann            ###   ########.fr       */
+/*   Updated: 2019/06/05 15:07:28 by tmann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,21 @@ int			main(void)
 {
 	t_lem	*po;
 	t_lst	*lst;
-	t_lst	*hl;
 
 	po = NULL;
 	lst = creat_list();
 	po = scan_param(po, lst);
 	lst = ft_sort_list(lst);
 	ft_bfs(lst, po);
-	hl = lst;
-	lst = hl;
+	start_end(lst, po);
 	c_par_out(lst, po);
 	func_kill_cross(lst);
 	free_visited(lst);
 	ft_bfs(lst, po);
-	ants_go_output(po, lst, 1, lst);
+	po = creat_way_for_ants(lst, po);
+	po = create_arr_ants(po);
+	count_ants_for_ways(po, po->num_ants);
+	create_ants_here(po, 0, 0, 0);
+	ft_final();
 	return (0);
 }

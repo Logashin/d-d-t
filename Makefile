@@ -14,7 +14,6 @@ SRC = main.c \
 	  alg_lem.c \
 	  struct_for_queue.c \
 	  ft_queue.c \
-	  run_of_ants.c \
 	  create_quick_way.c \
 	  re_malloc.c \
 	  add_queue.c \
@@ -22,6 +21,9 @@ SRC = main.c \
 	  check_double.c \
 	  check_par_dead_end.c \
 	  kill_cross.c \
+	  check_start_end.c \
+	  func_for_ants.c \
+	  print_ants.c \
 
 DIRSRC = ./src
 

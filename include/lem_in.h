@@ -6,7 +6,7 @@
 /*   By: tmann <tmann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 19:10:53 by tmann             #+#    #+#             */
-/*   Updated: 2019/05/31 22:06:05 by tmann            ###   ########.fr       */
+/*   Updated: 2019/06/05 15:06:59 by tmann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,14 @@ typedef struct		s_lem
 	int				val_start;
 	int				val_end;
 	char			*command;
-	struct s_way	*ways;
 	int				min_way;
 	int				bfs_count;
 	int				size_con_end;
 	int				size_con_start;
+	struct s_lst    **here;
+	int				count_way;
+	struct s_lst	**ways;
+    int				run_num_ants;
 }					t_lem;
 
 typedef struct		s_lst
@@ -48,7 +51,6 @@ typedef struct		s_lst
 
 	struct s_lst	**par;
 	int				sizepar;
-	int				ok;
 	struct s_lst	*go;
 	struct s_lst	*quick;
 
@@ -60,8 +62,8 @@ typedef struct		s_lst
 	int				alone;
 	int				len_way;
 
-	int				red;
 	int				i;
+	int             is_linked_with_start;
 }					t_lst;
 
 typedef	struct		s_queue
@@ -69,21 +71,6 @@ typedef	struct		s_queue
 	struct s_lst	*name;
 	struct s_queue	*next;
 }					t_queue;
-
-typedef	struct		s_way
-{
-	int				size;
-	struct s_lst	*forward;
-	struct s_lst	*name;
-	struct s_way	*next;
-	struct s_way	*back;
-}					t_way;
-
-typedef	struct		s_road
-{
-	struct s_lst	*name;
-	struct s_road	*next;
-}					t_road;
 
 t_lem				*scan_param(t_lem *po, t_lst *lst);
 void				ft_struct_zero(t_lem *po);
@@ -110,15 +97,14 @@ t_queue				*ft_delete_out_queue(t_queue *qu);
 
 void				ft_bfs(t_lst *lst, t_lem *po);
 
-void				ft_zero_way(t_way *w);
 void				*creat_way(void);
 void				creat_ways(t_lst *lst, t_lem *po, t_lst *head);
 void				creat_quick_way(t_lst *lst);
 t_lst				*check_quick(int i, t_lst *tmp);
 t_lst				*for_func_quick(int i, t_lst *tmp);
 void				del_dead_end(t_lst *lst, int check);
-
-void				*creat_road(void);
+void		    	start_end(t_lst *lst, t_lem *po);
+t_lem       		*sort_way(t_lem *po);
 
 void				try_write_par(t_lst *lst);
 int					is_or_not(t_lst *lst1, t_lst *lst2);
@@ -138,5 +124,13 @@ int					check_par(t_lst *lst, int i, int check);;
 void				del_brother(t_lst *lst, char *brother);
 int					check_par_dead_end(t_lst *lst, t_lst *par, int i, int res);
 void				kill_cross(t_lst *lst);
+
+t_lem				*creat_arr_ways(t_lem *po, t_lst *lst);
+t_lem        		*create_arr_ants(t_lem *po);
+t_lem				*creat_way_for_ants(t_lst *lst, t_lem *po);
+int     			is_all_ants_in_end(t_lem *po);
+void        		count_ants_for_ways(t_lem *po, int num_ants);
+void				create_ants_here(t_lem *po, int j, int i, int p);
+void				ft_final();
 
 #endif

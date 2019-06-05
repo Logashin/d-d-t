@@ -6,7 +6,7 @@
 /*   By: tmann <tmann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 17:26:00 by tmann             #+#    #+#             */
-/*   Updated: 2019/05/31 21:49:05 by tmann            ###   ########.fr       */
+/*   Updated: 2019/06/05 13:17:36 by tmann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@ int					var_param(int *dead_and, int *o_p, t_lst *lst, t_lst *par)
 		(*dead_and)++;
 	else if (ft_strcmp(lst->output[lst->i]->name_s, par->name_s) == 0)
 		(*o_p)++;
+	else if (lst->output[lst->i]->dead_end == -1 && lst->sizeoutput == 2)
+	{
+		lst->alone = 1;
+		return (10);
+	}
+	else if (lst->output[lst->i]->sizeoutput == 1 && lst->sizepar == 1)
+	{
+		lst->alone = 1;
+		return (10);
+	}
 	return (1);
 }
 

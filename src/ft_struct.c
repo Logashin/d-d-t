@@ -6,7 +6,7 @@
 /*   By: tmann <tmann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:54:28 by tmann             #+#    #+#             */
-/*   Updated: 2019/05/31 21:43:12 by tmann            ###   ########.fr       */
+/*   Updated: 2019/06/05 15:07:10 by tmann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,14 @@ void		ft_struct_zero(t_lem *po)
 	po->command = NULL;
 	po->val_end = 0;
 	po->val_start = 0;
-	po->ways = NULL;
 	po->min_way = 2147483647;
 	po->bfs_count = 0;
 	po->val_start = 0;
 	po->size_con_end = 0;
+	po->ways = NULL;
+	po->here = NULL;
+	po->run_num_ants = 0;
+	po->count_way = 0;
 }
 
 void		ft_lst_zero(t_lst *lst)
@@ -45,7 +48,6 @@ void		ft_lst_zero(t_lst *lst)
 	lst->green = 0;
 	lst->sizepar = 0;
 	lst->par = NULL;
-	lst->ok = 0;
 	lst->go = NULL;
 	lst->bfs_lvl = -1;
 	lst->output = NULL;
@@ -55,4 +57,31 @@ void		ft_lst_zero(t_lst *lst)
 	lst->alone = 0;
 	lst->len_way = -1;
 	lst->i = -1;
+	lst->is_linked_with_start = 0;
+}
+
+t_lem		*sort_way(t_lem *po)
+{
+	t_lst	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = NULL;
+	while ((po->count_way - 1) > i)
+	{
+		if (po->ways[i]->len_way > po->ways[i + 1]->len_way)
+		{
+			tmp = po->ways[i];
+			po->ways[i] = po->ways[i + 1];
+			po->ways[i + 1] = tmp;
+			i = -1;
+		}
+		i++;
+	}
+	return (po);
+}
+
+void		ft_final(void)
+{
+	exit(0);
 }
