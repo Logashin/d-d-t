@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_ants.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmann <tmann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dmorar <dmorar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 13:43:16 by tmann             #+#    #+#             */
-/*   Updated: 2019/06/05 15:08:28 by tmann            ###   ########.fr       */
+/*   Updated: 2019/06/06 14:00:44 by dmorar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,46 +28,51 @@ static int			use_ways(t_lem *po)
 	return (p);
 }
 
+void				vityas_name2(t_lem *po, int j, int *i)
+{
+	if (po->ways[*i]->green > 0)
+	{
+		po->here[j] = po->ways[*i];
+		po->ways[*i]->green--;
+		po->run_num_ants++;
+	}
+	if (po->count_way > *i)
+		(*i)++;
+}
+
+void				vityas_name(t_lem *po, int j, int i, int p)
+{
+	while (j < po->num_ants)
+	{
+		if (i == p)
+		{
+			i = 0;
+			break ;
+		}
+		if (po->here[j] == NULL && j < po->run_num_ants)
+		{
+			j++;
+			continue ;
+		}
+		if (po->here[j] == NULL)
+			vityas_name2(po, j, &i);
+		else
+			po->here[j] = po->here[j]->go;
+		if (po->here[j] != NULL)
+			ft_printf("L%d-%s ", j + 1, po->here[j]->name_s);
+		if (po->here[j] != NULL && po->here[j]->end == 1)
+			po->here[j] = NULL;
+		j++;
+	}
+}
+
 void				create_ants_here(t_lem *po, int j, int i, int p)
 {
 	p = use_ways(po);
 	while (1)
 	{
 		j = 0;
-		while (j < po->num_ants)
-		{
-			if (i == p)
-			{
-				i = 0;
-				break ;
-			}
-			if (po->here[j] == NULL && j < po->run_num_ants)
-			{
-				j++;
-				continue ;
-			}
-			if (po->here[j] == NULL)
-			{
-				if (po->ways[i]->green > 0)
-				{
-					po->here[j] = po->ways[i];
-					po->ways[i]->green--;
-					po->run_num_ants++;
-				}
-				if (po->count_way > i)
-					i++;
-			}
-			else
-				po->here[j] = po->here[j]->go;
-			if (po->here[j] != NULL)
-				ft_printf("L%d-%s ", j + 1, po->here[j]->name_s);
-			if (po->here[j] != NULL && po->here[j]->end == 1)
-			{
-				po->here[j] = NULL;
-			}
-
-			j++;
-		}
+		vityas_name(po, j, i, p);
 		ft_printf("\n");
 		if (is_all_ants_in_end(po) == 0)
 			break ;
